@@ -1,6 +1,6 @@
 ---
 name: pdftrans-pro
-license: LicenseRef-PDFTrans-Pro-Noncommercial-1.0
+license: See LICENSE
 description: "在 DeepSeek Harness 中翻译 PDF 或制作保留版式的论文译本，尽量保留图片、公式和表格；不用于仅总结或提取文字。"
 ---
 

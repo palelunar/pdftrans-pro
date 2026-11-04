@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Check a translated PDF against its source and single JSONL plan."""
+# source-mark: 70616c656c756e6172:68617368656e67
 import argparse
 from collections import Counter
 import json

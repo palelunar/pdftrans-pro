@@ -15,6 +15,8 @@ import tempfile
 
 import pymupdf
 
+# palelunar / hasheng
+
 
 def norm(text):
     for old, new in {'ﬀ': 'ff', 'ﬁ': 'fi', 'ﬂ': 'fl', 'ﬃ': 'ffi', 'ﬄ': 'ffl'}.items():

@@ -2,10 +2,6 @@
 
 # PDFTrans Pro
 
-**非商业使用免费；商用必须事先取得作者书面授权，并支付双方约定的授权费。**
-
-商业授权请联系 [palelunar](https://github.com/palelunar)，或提交 [商业授权申请](https://github.com/palelunar/pdftrans-pro/issues/new?title=Commercial%20license%20request)。授权费用和范围单独约定，公开源码不代表免费商用。
-
 一个轻量的 PDF 翻译技能：生成单文件计划，由模型填译文，再原位重建并检查。
 
 ## 安装
@@ -56,10 +52,4 @@ python scripts/verify.py paper.pdf paper_translated.pdf
 
 公共脚本在 `claude-code/pdftrans-pro/scripts/` 修改后运行 `python tools/sync_scripts.py`；`--check` 检查两套脚本一致。核心回归：`python -B -m unittest discover -s tests -v`。
 
-
-
-## 许可
-
-本版本采用 [PDFTrans Pro Noncommercial License 1.0](LICENSE)：允许查看源码、修改和非商业使用及分享，商业使用需单独付费授权。属于源码可用（source-available）许可，不是 OSI 定义的开源许可。以前已按 MIT 发布的旧版本不受追溯变更。
-
-本项目的授权仅覆盖本项目代码；PyMuPDF 等第三方依赖须另行遵守其许可证。PyMuPDF 提供 [AGPL 与商业授权](https://pymupdf.readthedocs.io/en/latest/about.html#license-and-copyright)，向本项目支付授权费不会自动取得第三方商业许可。
+[许可证](LICENSE)

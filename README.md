@@ -2,10 +2,6 @@
 
 # PDFTrans Pro
 
-**Free for noncommercial use. Commercial use requires prior written authorization from the author and payment of the agreed license fee.**
-
-Contact [palelunar](https://github.com/palelunar) or open a [commercial license request](https://github.com/palelunar/pdftrans-pro/issues/new?title=Commercial%20license%20request). Pricing and scope are agreed separately; public source code does not grant free commercial use.
-
 A small PDF translation skill: create one plan, let the agent fill translations, rebuild, and inspect.
 
 ## Install
@@ -49,10 +45,4 @@ For old jobs, flatten the effective translations into one JSONL and select it wi
 
 Edit common scripts in `claude-code/pdftrans-pro/scripts/`, then run `python tools/sync_scripts.py`. Use `--check` to compare packages. Core regressions: `python -B -m unittest discover -s tests -v`.
 
-
-
-## License
-
-This version uses the [PDFTrans Pro Noncommercial License 1.0](LICENSE): source inspection, modification, and noncommercial use and sharing are allowed; commercial use requires a separate paid license. This is a source-available license, not an OSI open-source license. Earlier releases already licensed under MIT are not retroactively relicensed.
-
-Our license covers our code only. Third-party dependencies remain under their own terms. PyMuPDF offers [AGPL and commercial licensing](https://pymupdf.readthedocs.io/en/latest/about.html#license-and-copyright); payment to this project's author does not grant a third-party commercial license.
+[License](LICENSE)
