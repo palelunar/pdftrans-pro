@@ -1,0 +1,71 @@
+PDFTrans Pro Noncommercial License 1.0
+
+Copyright (c) 2025-2026 palelunar
+
+1. Scope and acceptance
+
+This license applies to the PDFTrans Pro source code, scripts, and accompanying
+documentation provided by palelunar (the "Licensor") under this license
+(the "Software"). By exercising rights granted by this license, you accept
+its terms. Rights granted by applicable law independently of this license
+are not restricted.
+
+2. Noncommercial permission
+
+Subject to these terms, the Licensor grants you a worldwide, royalty-free,
+non-exclusive license to access, use, copy, modify, and redistribute the
+Software, including your modifications, solely for noncommercial purposes.
+You must retain this license and the copyright notice with copies or
+substantial portions of the Software, identify material modifications,
+and not grant recipients broader rights in the Software than this license.
+The Software and modifications containing it remain subject to the
+noncommercial restriction unless separately authorized by the Licensor.
+
+3. Commercial use requires a separate paid license
+
+Commercial use is any use primarily intended for or directed toward
+commercial advantage or monetary compensation, whether direct or indirect.
+Examples include use in business operations; incorporation into a commercial
+product or service; paid translation or document-processing services;
+commercial hosted services, APIs, or SaaS; and sale or commercial licensing
+of the Software or modifications containing it. Lack of a direct charge
+for the Software does not by itself make a use noncommercial.
+
+This license does not permit commercial use. Before such use, you must
+obtain separate written authorization from palelunar and pay the license
+fees agreed in that authorization. The scope, fees, payment terms, and
+any additional rights are determined by the separate written commercial
+agreement. No commercial license is implied by downloading the Software,
+contacting the Licensor, or making an unsolicited payment.
+
+Commercial licensing contact:
+https://github.com/palelunar/pdftrans-pro/issues
+https://github.com/palelunar
+
+4. Other rights and materials
+
+No trademark rights are granted. This license covers the Software, not
+ownership of input documents or generated translations. Commercial operation
+of the Software still requires the authorization described in section 3.
+Third-party libraries, fonts, and other materials remain under their own
+licenses; a license from palelunar does not grant rights held by others.
+Earlier copies released under a different license retain the rights granted
+by that license. This license does not revoke those earlier grants.
+
+5. Termination
+
+If you violate these terms, the permissions granted by this license terminate.
+You must stop the unauthorized use. Reinstatement requires the Licensor's
+written authorization. Termination does not limit any rights or remedies
+available under applicable law.
+
+6. Disclaimer
+
+TO THE EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS PROVIDED "AS IS",
+WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+The English text above is the governing license. A plain-language Chinese
+summary appears in README.zh-CN.md; it does not replace these terms.

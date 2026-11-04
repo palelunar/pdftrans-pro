@@ -1,0 +1,19 @@
+# Local documents, experiments and release staging
+/evaluation/
+/output/
+/release/
+/dist/
+/tmp/
+*.pdf
+*.pdftrans/
+*.zip
+*.log
+*.report.json
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
