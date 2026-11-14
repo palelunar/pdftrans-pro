@@ -10,6 +10,8 @@ import unittest
 import pymupdf
 
 SCRIPTS = Path(__file__).resolve().parents[1] / 'claude-code/pdftrans-pro/scripts'
+sys.path.insert(0, str(SCRIPTS))
+from pdftrans import wrap_lines, norm
 
 
 class TranslationTests(unittest.TestCase):
@@ -131,6 +133,56 @@ class TranslationTests(unittest.TestCase):
         with pymupdf.open(self.output) as doc:
             self.assertIn('Translated title', doc[0].get_text())
             self.assertNotIn('Unwanted', doc[0].get_text())
+
+    def test_cjk_wrap_keeps_punctuation_words_and_citations(self):
+        font = pymupdf.Font('china-s')
+        text = '方法采用（CSA）结构，参考[10]和[1, 3–5]。English words 不应逐字拆开；验证中文断行。'
+        lines = wrap_lines(text, font, 10, 90)
+        self.assertEqual(norm(''.join(lines)), norm(text))
+        for token in ('（CSA）', '[10]', '[1, 3–5]', 'English', 'words'):
+            self.assertTrue(any(token in line for line in lines), (token, lines))
+        self.assertTrue(all(font.text_length(line, fontsize=10) <= 90.01 for line in lines))
+        self.assertTrue(all(not line.startswith(tuple('，。；）]')) and not line.endswith(tuple('（[')) for line in lines))
+
+    def test_merge_list_and_preview_preserve_completed_work(self):
+        self.prepare()
+        original = self.plan.read_bytes()
+        self.run_script('pdftrans.py', self.source, '--merge', '1', '0-1')
+        rows = [json.loads(line) for line in self.plan.read_text(encoding='utf-8').splitlines()]
+        merged = next(r for r in rows if r.get('blocks') == [0, 1])
+        self.assertEqual(merged['dst'], 'Translated title')
+        self.assertFalse(any(r.get('b') in (0, 1) for r in rows))
+        self.assertEqual(Path(str(self.plan)+'.bak').read_bytes(), original)
+        result = self.run_script('pdftrans.py', self.source, '--list', '--pending', '--pages', '1')
+        self.assertNotIn('Translated title', result.stdout)
+        self.run_script('pdftrans.py', self.source, '--preview', '1')
+        self.assertTrue(Path(str(self.source)+'.preview/p001.png').exists())
+
+    def test_span_accepts_its_original_block_source(self):
+        rows = self.prepare()
+        rows[2].update(type='SPAN', s=0, dst='Translated span')
+        self.save(rows)
+        self.run_script('pdftrans.py', self.source, self.output)
+        self.run_script('verify.py', self.source, self.output)
+        with pymupdf.open(self.output) as doc:
+            self.assertIn('Translated span', doc[0].get_text())
+            self.assertIn('More details', doc[0].get_text())
+
+    def test_rotated_label_inside_rect_is_preserved_and_reported(self):
+        other = self.root/'rotated.pdf'
+        with pymupdf.open(self.source) as doc:
+            doc[0].insert_text((150, 330), 'Vertical label', rotate=90)
+            doc.save(other)
+        self.source = other
+        self.plan = Path(str(other)+'.pdftrans/plan.jsonl')
+        rows = self.prepare()
+        rows.append({'p': 1, 'type': 'RECT', 'rect': [130, 250, 200, 340], 'dst': 'Replacement'})
+        self.save(rows)
+        self.run_script('pdftrans.py', self.source, self.output)
+        report = json.loads(Path(str(self.output)+'.report.json').read_text(encoding='utf-8'))
+        self.assertTrue(any('旋转' in issue['message'] for issue in report['issues']))
+        with pymupdf.open(self.output) as doc:
+            self.assertIn('Vertical label', doc[0].get_text())
 
 
 if __name__ == '__main__':

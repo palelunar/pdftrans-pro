@@ -41,6 +41,14 @@ python scripts/verify.py paper.pdf paper_translated.pdf
 
 For old jobs, flatten the effective translations into one JSONL and select it with `--plan-file`. Existing files are not removed. Local evaluation artifacts are excluded from this repository.
 
+## Less reading and rework
+
+- `--list --pending --pages 1-3` gives a compact batch view; `--show PAGE BLOCK` supplies details only when needed.
+- `--merge PAGE BLOCKS` combines selected fragments; `--cells PAGE BLOCK` proposes table cells. Explicit edits keep one plan backup.
+- `--preview 1,3-5` renders the supplied source or translated PDF to PNG.
+- CJK wrapping, punctuation attachment, and font subsetting run automatically. Reductions below 90% of the original font size are reported. No extra dependency is needed.
+- Use `style: "caption"` for centered captions or `align` for explicit alignment. Line spacing is not automatically stretched to fill a block.
+
 ## Maintain
 
 Edit common scripts in `claude-code/pdftrans-pro/scripts/`, then run `python tools/sync_scripts.py`. Use `--check` to compare packages. Core regressions: `python -B -m unittest discover -s tests -v`.

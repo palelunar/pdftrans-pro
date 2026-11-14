@@ -5,24 +5,12 @@ import argparse
 from collections import Counter
 import json
 from pathlib import Path
-import re
 import sys
-import pymupdf
-from pdftrans import active, blocks, load_plan, locate, norm, plan_path
+from pdftrans import active, blocks, load_plan, locate, norm, plan_path, pymupdf, select_pages
 
 
 def parse_pages(spec, count):
-    if spec is None:
-        return set(range(1, count + 1))
-    pages = set()
-    for part in spec.split(','):
-        if not re.fullmatch(r'\s*\d+(?:\s*-\s*\d+)?\s*', part):
-            raise ValueError('--pages 格式应为 3-5,7')
-        ends = [int(n) for n in part.split('-')]
-        if not 1 <= ends[0] <= ends[-1] <= count:
-            raise ValueError('--pages 不能为空、倒序或超出页数')
-        pages.update(range(ends[0], ends[-1] + 1))
-    return pages
+    return select_pages(spec, count)
 
 
 def images(page):

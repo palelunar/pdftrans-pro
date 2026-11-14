@@ -48,6 +48,14 @@ python scripts/verify.py paper.pdf paper_translated.pdf
 
 旧任务先将实际生效的译文合成单个 JSONL，再用 `--plan-file` 指定；旧文件不会被清理。本地评测材料不上传到此仓库。
 
+## 少读、少返工
+
+- `--list --pending --pages 1-3`：紧凑的本批待填视图；用 `--show 页 块` 按需取全文。
+- `--merge 页 块范围`：合并同页碎片；`--cells 页 块`：为文字表格生成候选单元格。修改保留一份计划备份。
+- `--preview 1,3-5`：直接生成页面 PNG；输入应为要查看的原文或译本。
+- 自动中文断行、标点避头尾和字体子集化；缩字号超过10%会提示。无需额外依赖。
+- 图注可用 `style: "caption"`，其他对齐用 `align`。不自动拉大行距填满留白。
+
 ## 维护
 
 公共脚本在 `claude-code/pdftrans-pro/scripts/` 修改后运行 `python tools/sync_scripts.py`；`--check` 检查两套脚本一致。核心回归：`python -B -m unittest discover -s tests -v`。
