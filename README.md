@@ -2,7 +2,20 @@
 
 # PDFTrans Pro
 
-A small PDF translation skill: create one plan, let the agent fill translations, rebuild, and inspect.
+PDFTrans Pro lets an agent translate a paper paragraph by paragraph and puts the translation back on the original pages. Readers can follow the text alongside the original figures, and the agent can translate table labels while keeping the values in place.
+
+## Why Pro?
+
+- **Fewer fragments to piece together.** On the 25-page RCaware-nnUNetv2 paper, the original PDFTrans generated 7,336 plan entries, including 7,077 with just one or two words. Pro grouped the same source into 448 text blocks. That's 94% fewer entries, with surrounding words available when translating a passage.
+- **Less to read when choosing the next passage.** The agent can scan short previews of pending entries and expand a passage on demand. On the 19-page ESRVS paper, the full plan contained 73,779 characters. The pending overview took 7,219. These counts measure the text needed to select passages. Total translation tokens were not measured.
+- **Edit just the part that needs translation.** In the hyperparameter table on page 18 of ESRVS, Pro grouped 48 text fragments into 12 candidate cells. After translating six labels, the adjacent value column was pixel-identical to the original at 144 dpi. Complex inline equations within translated paragraphs still need a visual check.
+
+**The same translations in smaller PDFs.** Pro embeds only the font glyphs it uses. The comparison below used the same source PDFs and prefilled translations with the [previous Pro release](https://github.com/palelunar/pdftrans-pro/commit/e470ec358aad06dd1f0ccf348a7a5570f19c33cd) and the [updated release](https://github.com/palelunar/pdftrans-pro/commit/b706fcb7295f58ac13c8254616ace4fef49868ed). Build times cover one PDF rebuild per version on the same machine.
+
+| Paper | Translations written by each version | Output PDF (previous → updated) | Build time (previous → updated) |
+|---|---:|---:|---:|
+| SA-UNetv2 (5 pages) | 44 | 15.75 → 0.86 MB | 1.81 → 0.87 s |
+| ESRVS (19 pages) | 93 | 17.32 → 2.50 MB | 2.04 → 1.07 s |
 
 ## Install
 
